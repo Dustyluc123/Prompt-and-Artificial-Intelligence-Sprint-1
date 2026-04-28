@@ -37,7 +37,7 @@ def obter_resposta_sindico(mensagem: str) -> str:
     try:
         # Nova estrutura de chamada do modelo
         response = client.models.generate_content(
-            model='gemini-2.5-flash',
+            model='gemini-2.0-flash',
             contents=mensagem,
             config=types.GenerateContentConfig(
                 system_instruction=system_instruction,

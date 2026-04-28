@@ -3,37 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EV ChargeOps - Síndico Virtual</title>
+    <title>EV ChargeOps - GoodWe Intelligence</title>
     <style>
+        /* GoodWe Corporate Palette */
+        :root {
+            --gw-red: #cc0000;
+            --gw-dark: #2c2e33;
+            --gw-light: #f4f5f7;
+            --gw-white: #ffffff;
+            --gw-border: #e0e0e0;
+        }
+        
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { margin: 0; background-color: #f0f2f5; display: flex; justify-content: center; align-items: center; height: 100vh; }
-        .chat-container { width: 100%; max-width: 450px; background: white; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); display: flex; flex-direction: column; height: 80vh; overflow: hidden; }
-        .chat-header { background: #0056b3; color: white; padding: 15px 20px; text-align: center; font-weight: bold; font-size: 1.2rem; }
-        .chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; background: #e5ddd5; }
-        .message { max-width: 80%; padding: 10px 15px; border-radius: 8px; line-height: 1.4; font-size: 0.95rem; }
-        .bot-message { background: white; color: #333; align-self: flex-start; border-bottom-left-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .user-message { background: #dcf8c6; color: #333; align-self: flex-end; border-bottom-right-radius: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .chat-input { display: flex; padding: 15px; background: #f0f0f0; }
-        .chat-input input { flex: 1; padding: 12px; border: 1px solid #ccc; border-radius: 20px; outline: none; font-size: 1rem; }
-        .chat-input button { background: #0056b3; color: white; border: none; padding: 10px 20px; margin-left: 10px; border-radius: 20px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
-        .chat-input button:hover { background: #004494; }
-        .loading { font-size: 0.8rem; color: #666; align-self: center; display: none; }
+        
+        body { 
+            margin: 0; 
+            background-color: var(--gw-dark); 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+        }
+        
+        .chat-container { 
+            width: 100%; 
+            max-width: 500px; 
+            background: var(--gw-white); 
+            border-radius: 8px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); 
+            display: flex; 
+            flex-direction: column; 
+            height: 85vh; 
+            overflow: hidden; 
+        }
+        
+        /* Header corporativo */
+        .chat-header { 
+            background: var(--gw-white); 
+            padding: 15px 20px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            border-bottom: 3px solid var(--gw-red); 
+        }
+        
+        .chat-header img { 
+            max-height: 35px; 
+            /* Se a imagem falhar, mostra o alt text limpo */
+            color: var(--gw-red);
+            font-weight: bold;
+        }
+        
+        .chat-header .title { 
+            color: var(--gw-dark); 
+            font-weight: 600; 
+            font-size: 1rem; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Fundo do chat com marca d'agua do logo 2 */
+        .chat-messages { 
+            flex: 1; 
+            padding: 20px; 
+            overflow-y: auto; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 15px; 
+            background-color: var(--gw-light); 
+            background-image: url('logogoodwe2.png'); 
+            background-repeat: no-repeat; 
+            background-position: center; 
+            background-size: 60%; 
+            /* Deixa a imagem sutil para nao atrapalhar a leitura */
+            background-blend-mode: screen; 
+        }
+        
+        .message { 
+            max-width: 85%; 
+            padding: 12px 16px; 
+            border-radius: 6px; 
+            line-height: 1.5; 
+            font-size: 0.95rem; 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
+        }
+        
+        /* Estilo Bot: Limpo, borda vermelha lateral */
+        .bot-message { 
+            background: var(--gw-white); 
+            color: var(--gw-dark); 
+            align-self: flex-start; 
+            border-left: 4px solid var(--gw-red); 
+            border-bottom-left-radius: 0; 
+        }
+        
+        /* Estilo User: Vermelho GoodWe */
+        .user-message { 
+            background: var(--gw-red); 
+            color: var(--gw-white); 
+            align-self: flex-end; 
+            border-bottom-right-radius: 0; 
+        }
+        
+        .chat-input { 
+            display: flex; 
+            padding: 15px; 
+            background: var(--gw-white); 
+            border-top: 1px solid var(--gw-border); 
+        }
+        
+        .chat-input input { 
+            flex: 1; 
+            padding: 12px; 
+            border: 1px solid #ccc; 
+            border-radius: 4px; 
+            outline: none; 
+            font-size: 1rem; 
+            color: var(--gw-dark); 
+            transition: border 0.3s;
+        }
+        
+        .chat-input input:focus { 
+            border-color: var(--gw-red); 
+        }
+        
+        .chat-input button { 
+            background: var(--gw-red); 
+            color: var(--gw-white); 
+            border: none; 
+            padding: 10px 20px; 
+            margin-left: 10px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            transition: background 0.3s; 
+        }
+        
+        .chat-input button:hover { 
+            background: #a30000; 
+        }
+        
+        .loading { 
+            font-size: 0.8rem; 
+            color: #888; 
+            align-self: center; 
+            display: none; 
+            margin-top: -5px; 
+            margin-bottom: 10px; 
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
 
 <div class="chat-container">
     <div class="chat-header">
-        Síndico Virtual GoodWe
+        <img src="logogoodwe1.svg" alt="GoodWe Logo">
+        <span class="title">EV ChargeOps</span>
     </div>
+    
     <div class="chat-messages" id="chatMessages">
         <div class="message bot-message">
-            Olá! Sou o Síndico Virtual ChargeOps. Como posso te ajudar com a infraestrutura de carregamento do condomínio hoje?
+            <strong>Síndico Virtual GoodWe</strong><br>
+            Olá. O sistema ChargeOps está online. Como posso auxiliar na gestão da sua infraestrutura de recarga hoje?
         </div>
     </div>
-    <div class="loading" id="loadingIndicator">O Síndico está digitando...</div>
+    
+    <div class="loading" id="loadingIndicator">Analisando base de dados da infraestrutura...</div>
+    
     <div class="chat-input">
-        <input type="text" id="userInput" placeholder="Digite sua dúvida aqui..." onkeypress="handleKeyPress(event)">
+        <input type="text" id="userInput" placeholder="Digite sua solicitação técnica..." onkeypress="handleKeyPress(event)">
         <button onclick="sendMessage()">Enviar</button>
     </div>
 </div>
@@ -63,11 +202,11 @@
             if (response.ok) {
                 addMessageToChat(data.resposta_ia, 'bot-message');
             } else {
-                addMessageToChat('Erro: Não foi possível processar a resposta.', 'bot-message');
+                addMessageToChat('Erro: Falha na comunicação com os servidores centrais.', 'bot-message');
             }
         } catch (error) {
             loading.style.display = 'none';
-            addMessageToChat('Erro de conexão com o servidor Python.', 'bot-message');
+            addMessageToChat('Erro crítico: Sem conexão com a API do ChargeOps.', 'bot-message');
         }
     }
 
@@ -75,8 +214,10 @@
         const chatBox = document.getElementById('chatMessages');
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${className}`;
+        
         // Transforma quebras de linha da IA em <br> no HTML
         messageDiv.innerHTML = text.replace(/\n/g, '<br>');
+        
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
     }

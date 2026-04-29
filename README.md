@@ -48,18 +48,23 @@ Para testar a comunicação entre o Frontend visual e o Backend FastAPI alimenta
    cd <NOME_DA_PASTA_DO_PROJETO>
    python -m venv venv
 2. **Crie e ative o ambiente virtual:**
+   ```bash
     source venv/bin/activate  # No Windows use: venv\Scripts\activate
     pip install fastapi uvicorn google-genai pydantic pypdf2 python-dotenv
 3. **Instale as dependências essenciais:**
+      ```bash
     pip install fastapi uvicorn google-genai pydantic pypdf2 python-dotenv
 4. **Configure a Chave da API (Gemini):**
     Crie um arquivo chamado .env na raiz do projeto e insira a sua credencial:
+      ```bash
     GEMINI_API_KEY=sua_chave_aqui
 5. **Inicie o Servidor Backend:**
+      ```bash
     uvicorn main:app --reload
 *(Verifique no terminal a mensagem de confirmação: "Base de conhecimento carregada: manual_goodwe.pdf")*
 
 6. **Acesse a Interface (Frontend):**
+   
    Com o servidor rodando, abra o arquivo `index.html` diretamente em qualquer navegador para testar a comunicação corporativa com a IA.
 
 ---

@@ -45,7 +45,7 @@ def extrair_texto_pdf(caminho_arquivo: str) -> str:
     return texto
 
 # Carrega o PDF na memoria quando o servidor liga
-BASE_DE_CONHECIMENTO = extrair_texto_pdf("manual_goodwe.pdf")
+BASE_DE_CONHECIMENTO = extrair_texto_pdf("PDFs/manual_goodwe.pdf")
 
 def obter_resposta_sindico(mensagem: str) -> str:
     system_instruction = f"""

@@ -16,15 +16,25 @@
         
         * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         
+        /* Fundo animado corporativo (Efeito Inteligencia Artificial) */
         body { 
             margin: 0; 
-            background-color: var(--gw-dark); 
+            /* Gradiente combinando o cinza escuro e um leve reflexo do vermelho GoodWe */
+            background: linear-gradient(-45deg, #151618, #2c2e33, #4a0000, #1a1b1e);
+            background-size: 400% 400%;
+            animation: iaBreathing 15s ease infinite;
             display: flex; 
             justify-content: center; 
             align-items: center; 
             height: 100vh; 
         }
         
+        /* O motor do movimento: move o background de um lado para o outro de forma fluida */
+        @keyframes iaBreathing {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
         .chat-container { 
             width: 100%; 
             max-width: 500px; 

@@ -60,7 +60,7 @@ Para testar a comunicação entre o Frontend visual e o Backend FastAPI alimenta
     GEMINI_API_KEY=sua_chave_aqui
 5. **Inicie o Servidor Backend:**
       ```bash
-    uvicorn main:app --reload
+    uvicorn backend.main:app --reload
 *(Verifique no terminal a mensagem de confirmação: "Base de conhecimento carregada: manual_goodwe.pdf")*
 
 6. **Acesse a Interface (Frontend):**

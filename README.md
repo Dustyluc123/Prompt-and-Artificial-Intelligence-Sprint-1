@@ -105,7 +105,7 @@ Para a validação do chatbot, estabelecemos 5 perguntas que cobrem todos os req
 ---
 
 ## 🗺️ Fluxograma da Arquitetura
-[ INSERIR_IMAGEM_DO_FLUXOGRAMA_AQUI ]
+![Fluxograma da Arquitetura](Untitled%20Diagram.svg)
 *(Nota: O arquivo PDF/PNG com o fluxograma desenhado deve ser salvo na raiz do repositório e referenciado acima).*
 
 ---

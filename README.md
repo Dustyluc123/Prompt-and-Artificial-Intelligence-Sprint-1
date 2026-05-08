@@ -105,7 +105,7 @@ Para a validação do chatbot, estabelecemos 5 perguntas que cobrem todos os req
 ---
 
 ## 🗺️ Fluxograma da Arquitetura
-![Fluxograma da Arquitetura](Untitled%20Diagram.svg)
+![Fluxograma da Arquitetura](fluxograma-arquitetura-chatbot.svg)
 
 ---
 <div align="center">

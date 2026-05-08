@@ -6,6 +6,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
+import glob
+
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
@@ -28,24 +30,41 @@ app.add_middleware(
 class MensagemUsuario(BaseModel):
     texto: str
 
-# Funcao para ler o PDF
-def extrair_texto_pdf(caminho_arquivo: str) -> str:
-    texto = ""
-    try:
-        if os.path.exists(caminho_arquivo):
+def extrair_texto_pasta_pdfs(caminho_pasta: str) -> str:
+    texto_total = ""
+    # Busca todos os arquivos com extensao .pdf dentro da pasta informada
+    arquivos_pdf = glob.glob(os.path.join(caminho_pasta, "*.pdf"))
+    
+    if not arquivos_pdf:
+        print(f"AVISO CRITICO: Nenhum PDF encontrado na pasta '{caminho_pasta}'. A IA estara sem memoria tecnica.")
+        return texto_total
+
+    print(f"Iniciando leitura de {len(arquivos_pdf)} arquivo(s) PDF...")
+    
+    for caminho_arquivo in arquivos_pdf:
+        try:
             with open(caminho_arquivo, 'rb') as arquivo:
                 leitor = PyPDF2.PdfReader(arquivo)
+                texto_arquivo = ""
                 for pagina in leitor.pages:
-                    texto += pagina.extract_text() + "\n"
-            print(f"Base de conhecimento carregada: {caminho_arquivo}")
-        else:
-            print(f"AVISO: Arquivo {caminho_arquivo} nao encontrado. Rodando sem base de dados.")
-    except Exception as e:
-        print(f"Erro ao ler PDF: {e}")
-    return texto
+                    texto_extraido = pagina.extract_text()
+                    if texto_extraido:
+                        texto_arquivo += texto_extraido + "\n"
+                texto_total += f"\n--- DOCUMENTO: {os.path.basename(caminho_arquivo)} ---\n" + texto_arquivo
+                print(f"[OK] Documento injetado: {os.path.basename(caminho_arquivo)}")
+        except Exception as e:
+            print(f"[ERRO] Falha ao ler o arquivo {caminho_arquivo}: {e}")
+            
+    return texto_total
+
+# Descobre onde o arquivo main.py esta salvo fisicamente
+DIRETORIO_ATUAL = os.path.dirname(os.path.abspath(__file__))
+
+# Constroi o caminho exato para a pasta PDFs voltando uma pasta de forma segura
+CAMINHO_PDFS = os.path.join(DIRETORIO_ATUAL, "..", "PDFs")
 
 # Carrega o PDF na memoria quando o servidor liga
-BASE_DE_CONHECIMENTO = extrair_texto_pdf("PDFs/manual_goodwe.pdf")
+BASE_DE_CONHECIMENTO = extrair_texto_pasta_pdfs(CAMINHO_PDFS)
 
 def obter_resposta_sindico(mensagem: str) -> str:
     system_instruction = f"""
@@ -73,6 +92,7 @@ def obter_resposta_sindico(mensagem: str) -> str:
             contents=mensagem,
             config=types.GenerateContentConfig(
                 system_instruction=system_instruction,
+                temperature=0.2, 
             )
         )
         return response.text

@@ -81,7 +81,7 @@
             flex-direction: column; 
             gap: 15px; 
             background-color: var(--gw-light); 
-            background-image: url('img/logogoodwe2.pngx'); 
+            background-image: url('../img/logogoodwe2.png'); 
             background-repeat: no-repeat; 
             background-position: center; 
             background-size: 60%; 
@@ -97,6 +97,9 @@
             font-size: 0.95rem; 
             box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
         }
+        .message p { margin: 0 0 10px 0; }
+        .message p:last-child { margin: 0; }
+        .message ul { margin: 5px 0 10px 20px; padding: 0; }
         
         /* Estilo Bot: Limpo, borda vermelha lateral */
         .bot-message { 
@@ -163,12 +166,13 @@
             font-weight: 500;   
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
 <div class="chat-container">
     <div class="chat-header">
-        <img src="img/logogoodwe1.svg" alt="GoodWe Logo">
+        <img src="../img/logogoodwe1.svg" alt="GoodWe Logo">
         <span class="title">EV ChargeOps</span>
     </div>
     
@@ -225,8 +229,12 @@
         const messageDiv = document.createElement('div');
         messageDiv.className = `message ${className}`;
         
-        // Transforma quebras de linha da IA em <br> no HTML
-        messageDiv.innerHTML = text.replace(/\n/g, '<br>');
+        // Se a mensagem for do bot, traduz o Markdown. Se for do usuario, deixa como texto normal.
+        if (className === 'bot-message') {
+            messageDiv.innerHTML = marked.parse(text);
+        } else {
+            messageDiv.textContent = text;
+        }
         
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;

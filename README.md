@@ -3,7 +3,7 @@
 # ⚡ EV ChargeOps - Assistente Técnico e Operacional GoodWe
 **Orquestração e Suporte Inteligente para a Linha HCA Series em Condomínios e Frotas.**
 
-<img src="https://img.shields.io/badge/Status-Sprint_1_Completed-success?style=for-the-badge" /> <img src="https://img.shields.io/badge/Made_with-Python_&_FastAPI-3776AB?style=for-the-badge&logo=python&logoColor=white" /> <img src="https://img.shields.io/badge/AI-Gemini_Flash-4285F4?style=for-the-badge&logo=google&logoColor=white" />
+<img src="/Users/lucasbarretosantana/Documents/Prompt-and-Artificial-Intelligence-Sprint-1/Prompt-and-Artificial-Intelligence-Sprint-1/img/logogoodwe1.svg" /> <img src="/Users/lucasbarretosantana/Documents/Prompt-and-Artificial-Intelligence-Sprint-1/Prompt-and-Artificial-Intelligence-Sprint-1/img/logogoodwe2.png" />
 
 </div>
 

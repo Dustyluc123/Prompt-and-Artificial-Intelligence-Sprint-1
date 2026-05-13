@@ -19,7 +19,7 @@
 ---
 
 ## 🎯 O Problema (EV Challenge 2026)
-No contexto do EV Challenge, a adoção de veículos elétricos esbarra em um obstáculo de usabilidade e suporte. Proprietários de carregadores — sejam eles **Síndicos (EV ChargeOps)** gerenciando condomínios ou **Operadores Comerciais (ChargeGrid)** —, além dos próprios usuários finais, frequentemente não compreendem o funcionamento técnico, o significado dos alertas (LEDs) e os parâmetros da linha de equipamentos. A ausência de um suporte técnico imediato e integrado aos manuais gera sobrecarga de chamados, uso ineficiente da rede e frustração na orquestração da energia.
+No contexto do EV Challenge, a adoção de veículos elétricos esbarra em um obstáculo de usabilidade e suporte. Proprietários de carregadores — sejam eles **Síndicos (EV ChargeOps)** **Operadores Comerciais (ChargeGrid)** —, além dos próprios usuários finais, frequentemente não compreendem o funcionamento técnico, o significado dos alertas (LEDs) e os parâmetros da linha de equipamentos. A ausência de um suporte técnico imediato e integrado aos manuais gera sobrecarga de chamados, uso ineficiente da rede e frustração na orquestração da energia.
 
 ## 🤖 A Solução e a Persona
 Desenvolvemos o **Assistente Técnico ChargeOps**. Trata-se de um chatbot operacional especialista no hardware oficial do desafio: a **Série HCA G2 da GoodWe**.
@@ -44,8 +44,8 @@ Para testar a comunicação entre o Frontend visual e o Backend FastAPI alimenta
 
 1. **Clone o repositório:**
    ```bash
-   git clone <INSERIR_LINK_DO_SEU_REPOSITORIO_AQUI>
-   cd <NOME_DA_PASTA_DO_PROJETO>
+   git clone https://github.com/Dustyluc123/Prompt-and-Artificial-Intelligence-Sprint-1.git
+   cd Prompt-and-Artificial-Intelligence-Sprint-1
    python -m venv venv
 2. **Crie e ative o ambiente virtual:**
    ```bash
@@ -72,7 +72,7 @@ Para testar a comunicação entre o Frontend visual e o Backend FastAPI alimenta
 ## 🧠 System Prompt (O Cérebro da IA)
 O modelo foi condicionado utilizando o seguinte papel de sistema para garantir restrição de escopo e inteligência emocional:
 
-> "Você é o 'Síndico Virtual ChargeOps', um assistente especialista em gestão de recarga de veículos elétricos (EV) para condomínios, utilizando tecnologia GoodWe. Use as informações da base de conhecimento (Manuais GoodWe injetados) para basear suas respostas. Se a resposta não estiver no texto, diga que não tem essa informação.
+> "Você é o 'Síndico Virtual ChargeOps', um assistente especialista em gestão de recarga de veículos elétricos (EV), utilizando tecnologia GoodWe. Use as informações da base de conhecimento (Manuais GoodWe injetados) para basear suas respostas. Se a resposta não estiver no texto, diga que não tem essa informação.
 > REGRAS ABSOLUTAS: 
 > 1. Responda APENAS sobre assuntos relacionados a condomínios, carregamento de EV, troubleshooting e energia. Recuse outros temas educadamente. 
 > 2. INTELIGÊNCIA EMOCIONAL: Se o usuário estiver BRAVO ou com URGÊNCIA, comece pedindo desculpas, seja empático e foque na resolução. Se estiver NEUTRO, seja direto e técnico. Retorne a resposta sem incluir a análise interna de sentimento."

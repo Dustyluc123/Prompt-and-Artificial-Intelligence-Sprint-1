@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ EV ChargeOps - Assistente Técnico e Operacional GoodWe
+#  EV ChargeOps - Assistente Técnico e Operacional GoodWe
 **Orquestração e Suporte Inteligente para a Linha HCA Series em Frotas.**
 
 <img src="img/logogoodwe1.svg" /> 
@@ -9,7 +9,7 @@
 
 ---
 
-## 👥 Equipe de Desenvolvimento
+## Equipe de Desenvolvimento
 * **Lucas Barreto Santana** - RM: 573149
 * **João Marcelo de Melo e Silva** - RM: 572569
 * **Pablo Renato dos Santos Sobral de Carvalho** - RM: 569894
@@ -18,10 +18,10 @@
 
 ---
 
-## 🎯 O Problema (EV Challenge 2026)
+## O Problema (EV Challenge 2026)
 No contexto do EV Challenge, a adoção de veículos elétricos esbarra em um obstáculo de usabilidade e suporte. Proprietários de carregadores — sejam eles **Síndicos (EV ChargeOps)** **Operadores Comerciais (ChargeGrid)** —, além dos próprios usuários finais, frequentemente não compreendem o funcionamento técnico, o significado dos alertas (LEDs) e os parâmetros da linha de equipamentos. A ausência de um suporte técnico imediato e integrado aos manuais gera sobrecarga de chamados, uso ineficiente da rede e frustração na orquestração da energia.
 
-## 🤖 A Solução e a Persona
+##  A Solução e a Persona
 Desenvolvemos o **Assistente Técnico ChargeOps**. Trata-se de um chatbot operacional especialista no hardware oficial do desafio: a **Série HCA G2 da GoodWe**.
 * **Personas Atendidas:** Gestores de infraestrutura (Síndicos/Operadores) que precisam entender os parâmetros do equipamento para gerenciar a carga, e Usuários Finais que precisam de troubleshooting rápido (ex: o que fazer se o cabo travar).
 * **Escopo:** O chatbot atua como a primeira linha de suporte técnico, consumindo os manuais oficiais da GoodWe para sanar dúvidas operacionais, limites de potência (orquestração) e falhas, evitando acionamentos técnicos desnecessários.
@@ -29,7 +29,7 @@ Desenvolvemos o **Assistente Técnico ChargeOps**. Trata-se de um chatbot operac
 
 ---
 
-## 🛠️ Tecnologias e Justificativa Técnica
+##  Tecnologias e Justificativa Técnica
 
 Para garantir que a solução seja rápida, escalável e fiel aos dados técnicos da GoodWe, a arquitetura foi desenhada com:
 
@@ -39,7 +39,7 @@ Para garantir que a solução seja rápida, escalável e fiel aos dados técnico
 
 ---
 
-## 🚀 Como Executar o Projeto Localmente (Avaliador)
+## Como Executar o Projeto Localmente (Avaliador)
 Para testar a comunicação entre o Frontend visual e o Backend FastAPI alimentado pelo RAG, siga os passos abaixo:
 
 1. **Clone o repositório:**
@@ -69,7 +69,7 @@ Para testar a comunicação entre o Frontend visual e o Backend FastAPI alimenta
 
 ---
 
-## 🧠 System Prompt (O Cérebro da IA)
+## System Prompt (O Cérebro da IA)
 O modelo foi condicionado utilizando o seguinte papel de sistema para garantir restrição de escopo e inteligência emocional:
 
 > "Você é o 'Síndico Virtual ChargeOps', um assistente especialista em gestão de recarga de veículos elétricos (EV), utilizando tecnologia GoodWe. Use as informações da base de conhecimento (Manuais GoodWe injetados) para basear suas respostas. Se a resposta não estiver no texto, diga que não tem essa informação.
@@ -79,7 +79,7 @@ O modelo foi condicionado utilizando o seguinte papel de sistema para garantir r
 
 ---
 
-## 🧪 Modelo de Teste e Validação
+## Modelo de Teste e Validação
 Para a validação do chatbot, estabelecemos 5 perguntas que cobrem todos os requisitos arquiteturais (RAG, Escopo e Sentimento):
 
 **1. Teste de Escopo/Boundary (Restrição de Assunto)**
@@ -104,7 +104,7 @@ Para a validação do chatbot, estabelecemos 5 perguntas que cobrem todos os req
 
 ---
 
-## 🗺️ Fluxograma da Arquitetura
+##  Fluxograma da Arquitetura
 ![Fluxograma da Arquitetura](fluxograma-arquitetura-chatbot.svg)
 
 ---
